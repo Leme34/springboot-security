@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.mapper.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.lee.pojo.SysPermission">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="resource_id" jdbcType="VARCHAR" property="resourceId" />
+  </resultMap>
+
+  <select id="getPermissionByRoleId" parameterType="integer" resultMap="BaseResultMap">
+    SELECT p.id,p.name,p.desc,p.url,p.pid,p.resource_id
+    FROM sys_role r
+    LEFT JOIN sys_role_permission sp ON sp.role_id = r.id
+    LEFT JOIN sys_permission p ON p.id = sp.permission_id
+    WHERE r.id = #{roleId}
+  </select>
+
+</mapper>
