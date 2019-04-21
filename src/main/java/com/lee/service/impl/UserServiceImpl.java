@@ -120,13 +120,14 @@ public class UserServiceImpl implements SysUserService, UserDetailsService, Soci
     }
 
     /**
-     * TODO 第三方登录时调用loadUserByUserId方法来认证用户
+     * 第三方登录时调用loadUserByUserId方法来认证用户
+     * TODO 此处写死用户名任意，密码为123
      */
     @Override
     public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
         String password = passwordEncoder.encode("123");
         log.info("第三方用户登录的密码：" + password);
         return new SocialUser(userId,password,true,true,true,true,
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER"));
     }
 }

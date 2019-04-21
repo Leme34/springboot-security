@@ -30,7 +30,7 @@ public class TestController {
     /**
      * 使用 hasPermission 或者 hasRole 其一来校验权限
      * 因为底层都是调用authentication.getAuthorities()获取loadUserByUsername()添加的权限
-     * TODO bug：若用户权限不足会变为匿名用户而跳转登录页，而不是由MyAccessDeniedHandler返回权限不足
+     * bug：若用户权限不足会变为匿名用户而跳转登录页，而不是由MyAccessDeniedHandler返回权限不足，使用spring-session-data-redis则没问题
      */
     @PreAuthorize("hasPermission('user','write') or hasRole('ROLE_ADMIN')")
     @RequestMapping("/test1")
