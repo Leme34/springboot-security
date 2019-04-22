@@ -13,6 +13,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/app-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rbac/pom.xml" />
       </set>
     </option>
   </component>
